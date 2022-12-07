@@ -46,22 +46,32 @@ if __name__ == '__main__':
         for line in f:
             if line[0] == '$': # Indicates line is a command. We look at character 2 and 3 for what type.
                 flag = False
-                if line[2] == 'c' and line[3] == 'd': # Create a new node
+                if line[2] == 'c' and line[3] == 'd': # Access a directory.
                     # Get the name of the new node
                     name = line[5:-1]
-                    if name == '/': # If the new node is the root, we need to create a new tree
+
+                     # If the name is the root, we need to create a new tree (starting case)
+                    if name == '/':
                         tree = Tree(name)
                         current = tree
-                    elif name == '..': # If the new node is the parent of the current node, we need to go up a level 
+                    
+                    # If the name is the parent of the current node, we need to go up a level 
+                    elif name == '..':
                         current = current.parent
-                    elif name in [child.data for child in current.children]: # If the new node is a child of the current node, we need to go down a level
+
+                    # If the name is already a child of the current node, we need to go down a level
+                    elif name in [child.data for child in current.children]:
                         current = current.children[[child.data for child in current.children].index(name)]
+
+                    # Otherwise, we need to create a new node as a child of the current node
                     else:
                         new = Tree(name, current)
                         current.children.append(new)
                         current = new
+
                 if line[2] == 'l' and line[3] == 's': # Indicates the next lines are going to be a list of files
                     flag = True
+
             elif flag:
                 text = line.split()
                 if text[0] == 'dir':
@@ -79,7 +89,7 @@ if __name__ == '__main__':
     directories = find_directories_of_max_size(tree, 100000)
     for folder in directories:
         res += calculate_size(folder)
-    print("PART 1: Total size of all dirs under 100000", res)
+    print("PART 1: Total size of all dirs under 100000:", res)
 
     # For Part 2, we find all directories that can free up 30000000 bytes.
     total_space = 70000000
@@ -90,4 +100,4 @@ if __name__ == '__main__':
     # Find smallest directory of that size to delete
     to_delete = find_directories_of_min_size(tree, needed_space)
     to_delete.sort(key=lambda x: calculate_size(x))
-    print("PART 2: Smallest directory to delete", to_delete[0].data, calculate_size(to_delete[0]))
+    print("PART 2: Smallest directory to delete:", to_delete[0].data, calculate_size(to_delete[0]))
