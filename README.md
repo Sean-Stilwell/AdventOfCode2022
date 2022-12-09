@@ -13,3 +13,5 @@ To run, create a `./data/` folder and add your data there. The following files a
 | 5   | crane.txt               |
 | 6   | None, include text in call to Python |
 | 7   | commands.txt            |
+| 8   | trees.txt               |
+| 9   | rope.txt                |
