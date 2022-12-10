@@ -27,16 +27,16 @@ def move_tail(head_position, tail_position):
     # If they are not in the same row or column, move the tail diagonally
     if head_position[0] != tail_position[0] and head_position[1] != tail_position[1]:
         # If the head is 2 or more units up and 1 or more unit right OR 2 or more units right and 1 or more unit up, move the tail up and right
-        if (head_position[1] - tail_position[1] >= 2 and head_position[0] - tail_position[0] >= 1) or (head_position[0] - tail_position[0] >= 2 and head_position[1] - tail_position[1] >= 1):
+        if (head_position[1] - tail_position[1] >= 1 and head_position[0] - tail_position[0] >= 1) or (head_position[0] - tail_position[0] >= 1 and head_position[1] - tail_position[1] >= 1):
             tail_position = (tail_position[0] + 1, tail_position[1] + 1)
         # If the head is 2 or more units up and 1 or more unit left OR 2 or more units left and 1 or more unit up, move the tail up and left
-        if (head_position[1] - tail_position[1] >= 2 and head_position[0] - tail_position[0] <= -1) or (head_position[0] - tail_position[0] <= -2 and head_position[1] - tail_position[1] >= 1):
+        if (head_position[1] - tail_position[1] >= 1 and head_position[0] - tail_position[0] <= -1) or (head_position[0] - tail_position[0] <= -1 and head_position[1] - tail_position[1] >= 1):
             tail_position = (tail_position[0] - 1, tail_position[1] + 1)
         # If the head is 2 or more units down and 1 or more unit right OR 2 or more units right and 1 or more unit down, move the tail down and right
-        if (head_position[1] - tail_position[1] <= -2 and head_position[0] - tail_position[0] >= 1) or (head_position[0] - tail_position[0] >= 2 and head_position[1] - tail_position[1] <= -1):
+        if (head_position[1] - tail_position[1] <= -1 and head_position[0] - tail_position[0] >= 1) or (head_position[0] - tail_position[0] >= 1 and head_position[1] - tail_position[1] <= -1):
             tail_position = (tail_position[0] + 1, tail_position[1] - 1)
         # If the head is 2 or more units down and 1 or more unit left OR 2 or more units left and 1 or more unit down, move the tail down and left
-        if (head_position[1] - tail_position[1] <= -2 and head_position[0] - tail_position[0] <= -1) or (head_position[0] - tail_position[0] <= -2 and head_position[1] - tail_position[1] <= -1):
+        if (head_position[1] - tail_position[1] <= -1 and head_position[0] - tail_position[0] <= -1) or (head_position[0] - tail_position[0] <= -1 and head_position[1] - tail_position[1] <= -1):
             tail_position = (tail_position[0] - 1, tail_position[1] - 1)
 
     return tail_position
