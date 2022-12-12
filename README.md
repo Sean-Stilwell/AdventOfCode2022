@@ -16,3 +16,4 @@ To run, create a `./data/` folder and add your data there. The following files a
 | 8   | trees.txt               |
 | 9   | rope.txt                |
 | 10  | cpu-instructions.txt    |
+| 11  | monkeys.txt             |

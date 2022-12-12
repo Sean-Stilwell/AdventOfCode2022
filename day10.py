@@ -19,7 +19,6 @@ if __name__ == '__main__':
             else:
                 amounts.append(register)
 
-
     # Sum the amounts of 20, 60, 100, 140, etc...
     sum = 0
     for i in range(19, len(amounts), 40):
